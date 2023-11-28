@@ -1,7 +1,7 @@
-
 API.key
 /.vs
-/UciEngine/bin
-/UciEngine/obj
-/UciEngine.Tests/bin
-/UciEngine.Tests/obj
+/BigDecimalCore/bin
+/BigDecimalCore/obj
+/BigDecimalCore/Properties/PublishProfiles
+/BigDecimalCore.Test/bin
+/BigDecimalCore.Test/obj
