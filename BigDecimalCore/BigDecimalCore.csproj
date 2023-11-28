@@ -4,6 +4,19 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Lubos Repaty</Authors>
+    <Description>An arbitrary precision decimal (base 10) floating point number type using a mantissa and exponent. Supports logarithms, Exp, Pi, trigonometric functions, etc.</Description>
+    <PackageTags>biginteger, bigdecimal</PackageTags>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Version>1.0.0</Version>
+    <PackageProjectUrl>https://github.com/lrepaty/BigDecimalCore</PackageProjectUrl>
+    <Copyright>Copyright © Lubos Repaty 2023-2023</Copyright>
+    <Title></Title>
+    <Company>Lubos Repaty</Company>
+    <Product>UciEngine  (Core)</Product>
   </PropertyGroup>
 
 </Project>
