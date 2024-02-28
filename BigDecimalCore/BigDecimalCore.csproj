@@ -17,6 +17,7 @@
     <Title></Title>
     <Company>Lubos Repaty</Company>
     <Product>UciEngine  (Core)</Product>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
