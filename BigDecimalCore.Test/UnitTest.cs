@@ -6,12 +6,12 @@ namespace BigDecimals.Test
     [TestClass]
     public class UnitTest
     {
-        int oldPrecision = BigDecimal.Precision;
+        int oldPrecision;
 
         [TestInitialize]
         public void Initialize()
         {
-            
+            oldPrecision = BigDecimal.Precision;
             BigDecimal.Precision = 10;
         }
 
@@ -1999,8 +1999,6 @@ namespace BigDecimals.Test
             string excepted;
             string actual;
             BigDecimal bigDecimalResult;
-            int oldPrecision;
-            oldPrecision = BigDecimal.Precision;
             decimal dValue = 1;
             excepted = $"2{Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator}71828182845904523536028747135266249775724709369995957496696762772407663035354759457138217852516642742746639193200305992181741359662904357290033429526059563073813232862794349076323382988075319525101901157383418793070215408914993488416750924476146066808226480016847741185374234544243710753907774499206955170276183860626133138458300075204493382656029760673711320070932870912744374704723069697720931014169283681902551510865746377211125238978442505695369677078544996996794686445490598793163688923009879312773617821542499922957635148220826989519366803318252886939849646510582093923982948879332036250944311730123819706841614039701983767932068328237646480429531180232878250981945581530175671736133206981125099618188159304169035159888851934580727386673858942287922849989208680582574927961048419844436346324496848756023362482704197862320900216099023530436994184914631409343173814364054625315209618369088870701676839642437814059271456354906130310720851038375051011574770417189861068739696552126715468895704";
             BigDecimal.Precision = excepted.Length - 2;
@@ -2015,15 +2013,16 @@ namespace BigDecimals.Test
         {
             string excepted;
             string actual;
-            int oldPrecision;
             BigDecimal bigDecimalValue;
             bigDecimalValue = 2;
             excepted = $"0{Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator}6931471805599453094172321214581765680755001343602552541206800094933936219696947156058633269964186875";
-            oldPrecision = BigDecimal.Precision;
-            BigDecimal.Precision = excepted.Length - 2;
-            actual = BigDecimal.Ln(bigDecimalValue).ToString();
+            BigDecimal.Precision = excepted.Length;
+            BigDecimal result = BigDecimal.Ln(bigDecimalValue);
+            actual =  BigDecimal.Round(result, excepted.Length - 2).ToString();
             actual.Should().Be(excepted);
-            BigDecimal.Precision = oldPrecision;
+            BigDecimal.Precision = excepted.Length - 2;
+            result = BigDecimal.Exp(result);
+            result.Should().Be(bigDecimalValue);
         }
 
         [TestMethod]
@@ -2031,13 +2030,10 @@ namespace BigDecimals.Test
         {
             string excepted;
             string actual;
-            int oldPrecision;
             excepted = $"3{Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator}141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930381964";
-            oldPrecision = BigDecimal.Precision;
             BigDecimal.Precision = excepted.Length - 2;
             actual = BigDecimal.PI.ToString();
             actual.Should().Be(excepted);
-            BigDecimal.Precision = oldPrecision;
         }
 
         [TestMethod]
@@ -2045,13 +2041,10 @@ namespace BigDecimals.Test
         {
             string excepted;
             string actual;
-            int oldPrecision;
-            oldPrecision = BigDecimal.Precision;
             BigDecimal.Precision = 300;
             excepted = (BigDecimal.Sqrt(2) / 2).ToString();
             actual = BigDecimal.Sin(BigDecimal.PI / 4).ToString();
             actual.Should().Be(excepted);
-            BigDecimal.Precision = oldPrecision;
         }
 
         [TestMethod]
@@ -2059,13 +2052,10 @@ namespace BigDecimals.Test
         {
             string excepted;
             string actual;
-            int oldPrecision;
-            oldPrecision = BigDecimal.Precision;
             BigDecimal.Precision = 300;
             excepted = (BigDecimal.Sqrt(2) / 2).ToString();
             actual = BigDecimal.Cos(BigDecimal.PI / 4).ToString();
             actual.Should().Be(excepted);
-            BigDecimal.Precision = oldPrecision;
         }
 
         [TestMethod]
@@ -2073,9 +2063,7 @@ namespace BigDecimals.Test
         {
             string excepted;
             string actual;
-            int oldPrecision;
             BigDecimal value, result;
-            oldPrecision = BigDecimal.Precision;
             BigDecimal.Precision = 300;
             value = BigDecimal.PI / 8;
             BigDecimal.Precision += 2;
@@ -2085,7 +2073,6 @@ namespace BigDecimals.Test
             excepted = result.ToString();
             actual = BigDecimal.Tan(value).ToString();
             actual.Should().Be(excepted);
-            BigDecimal.Precision = oldPrecision;
         }
 
         [TestMethod]
@@ -2093,9 +2080,7 @@ namespace BigDecimals.Test
         {
             string excepted;
             string actual;
-            int oldPrecision;
             BigDecimal value, result;
-            oldPrecision = BigDecimal.Precision;
             BigDecimal.Precision = 300;
             value = BigDecimal.PI / 4;
             BigDecimal.Precision += 2;
@@ -2105,7 +2090,6 @@ namespace BigDecimals.Test
             excepted = result.ToString();
             actual = BigDecimal.Sinh(value).ToString();
             actual.Should().Be(excepted);
-            BigDecimal.Precision = oldPrecision;
         }
 
         [TestMethod]
@@ -2113,9 +2097,7 @@ namespace BigDecimals.Test
         {
             string excepted;
             string actual;
-            int oldPrecision;
             BigDecimal value, result;
-            oldPrecision = BigDecimal.Precision;
             BigDecimal.Precision = 300;
             value = BigDecimal.PI / 4;
             BigDecimal.Precision += 2;
@@ -2125,7 +2107,6 @@ namespace BigDecimals.Test
             excepted = result.ToString();
             actual = BigDecimal.Cosh(value).ToString();
             actual.Should().Be(excepted);
-            BigDecimal.Precision = oldPrecision;
         }
 
 
@@ -2134,9 +2115,7 @@ namespace BigDecimals.Test
         {
             string excepted;
             string actual;
-            int oldPrecision;
             BigDecimal value, result;
-            oldPrecision = BigDecimal.Precision;
             BigDecimal.Precision = 300;
             value = BigDecimal.PI / 4;
             BigDecimal.Precision += 2;
@@ -2146,7 +2125,6 @@ namespace BigDecimals.Test
             excepted = result.ToString();
             actual = BigDecimal.Tanh(value).ToString();
             actual.Should().Be(excepted);
-            BigDecimal.Precision = oldPrecision;
         }
 
         [TestMethod]
