@@ -1075,7 +1075,7 @@ namespace System.Numerics
                 bool done;
                 oldPrecision = Precision;
                 if (Precision <= Int32.MaxValue - 2)
-                    Precision += 3;
+                    Precision += 2;
                 else
                     Precision = Int32.MaxValue;
                 maxDifenece = new BigDecimal(1, -Precision);
