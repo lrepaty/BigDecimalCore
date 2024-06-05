@@ -1579,6 +1579,42 @@ namespace BigDecimals.Test
         }
 
         [TestMethod]
+        public void TestMultiple_10_Powered()
+        {
+            MidpointRounding oldRouding = BigDecimal.Rounding;
+            decimal[] values = { 344, 345, 347, 354, 355, 357 -344, -345, -347, -354, -355, -357 };
+            foreach (decimal value in values)
+            {
+                BigInteger val = (int)value;
+                BigDecimal.Rounding = MidpointRounding.ToEven;
+                string actual = BigDecimal.Multiple_10_Powered(val, -1).ToString();
+                string excepted = decimal.Round(value / 10, 0, BigDecimal.Rounding).ToString();
+                actual.Should().Be(excepted);
+
+                BigDecimal.Rounding = MidpointRounding.AwayFromZero;
+                actual = BigDecimal.Multiple_10_Powered(val, -1).ToString();
+                excepted = decimal.Round(value / 10, 0, BigDecimal.Rounding).ToString();
+                actual.Should().Be(excepted);
+
+                BigDecimal.Rounding = MidpointRounding.ToZero;
+                actual = BigDecimal.Multiple_10_Powered(val, -1).ToString();
+                excepted = decimal.Round(value / 10, 0, BigDecimal.Rounding).ToString();
+                actual.Should().Be(excepted);
+
+                BigDecimal.Rounding = MidpointRounding.ToNegativeInfinity;
+                actual = BigDecimal.Multiple_10_Powered(val, -1).ToString();
+                excepted = decimal.Round(value / 10, 0, BigDecimal.Rounding).ToString();
+                actual.Should().Be(excepted);
+
+                BigDecimal.Rounding = MidpointRounding.ToPositiveInfinity;
+                actual = BigDecimal.Multiple_10_Powered(val, -1).ToString();
+                excepted = decimal.Round(value / 10, 0, BigDecimal.Rounding).ToString();
+                actual.Should().Be(excepted);
+            }
+            BigDecimal.Rounding = oldRouding;
+        }
+
+        [TestMethod]
         public void TestMinusMinus()
         {
             decimal value = 0.0011234567500650883M;
