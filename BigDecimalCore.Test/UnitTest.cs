@@ -7,18 +7,21 @@ namespace BigDecimals.Test
     public class UnitTest
     {
         int oldPrecision;
+        MidpointRounding oldRounding;
 
         [TestInitialize]
         public void Initialize()
         {
             oldPrecision = BigDecimal.Precision;
             BigDecimal.Precision = 10;
+            oldRounding = BigDecimal.Rounding;
         }
 
         [TestCleanup]
         public void Cleanup()
         {
             BigDecimal.Precision = oldPrecision;
+            BigDecimal.Rounding = oldRounding;
         }
 
         [TestMethod]
@@ -34,8 +37,6 @@ namespace BigDecimals.Test
             a = value;
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
         }
 
         [TestMethod]
@@ -76,9 +77,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -119,9 +117,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -162,9 +157,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -205,9 +197,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -248,9 +237,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -291,9 +277,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -340,9 +323,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -377,9 +357,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToNegativeInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -420,9 +397,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -457,9 +431,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToNegativeInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -500,9 +471,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -549,9 +517,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -586,9 +551,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToNegativeInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -629,9 +591,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -666,9 +625,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToNegativeInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -709,9 +665,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -758,9 +711,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -801,9 +751,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -844,9 +791,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -887,9 +831,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -930,9 +871,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -979,9 +917,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round((decimal)value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -997,9 +932,6 @@ namespace BigDecimals.Test
             a = value;
             excepted = (Math.Round(value / 10) * 10).ToString();
             actual = a.ToString();
-
-            actual.Should().Be(excepted);
-            BigDecimal.Precision = 10;
         }
 
         [TestMethod]
@@ -1040,9 +972,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round(value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
         [TestMethod]
         public void TestDecimal_Minus5()
@@ -1082,9 +1011,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round(value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -1125,9 +1051,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round(value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -1167,9 +1090,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round(value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -1210,9 +1130,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round(value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -1253,9 +1170,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round(value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -1296,9 +1210,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round(value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -1350,9 +1261,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round(value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -1393,9 +1301,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round(value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -1437,9 +1342,6 @@ namespace BigDecimals.Test
             excepted = (Math.Round(value / 10, MidpointRounding.ToPositiveInfinity) * 10).ToString();
             actual = a.ToString();
             actual.Should().Be(excepted);
-
-            BigDecimal.Precision = 10;
-            BigDecimal.Rounding = MidpointRounding.ToEven;
         }
 
         [TestMethod]
@@ -1638,7 +1540,6 @@ namespace BigDecimals.Test
             BigDecimal result = val1 + val2;
             string actual = result.ToString();
             actual.Should().Be(excepted);
-            BigDecimal.Precision = 10;
         }
 
         [TestMethod]
@@ -1653,7 +1554,6 @@ namespace BigDecimals.Test
             BigDecimal result = val1 - val2;
             string actual = result.ToString();
             actual.Should().Be(excepted);
-            BigDecimal.Precision = 10;
         }
 
         [TestMethod]
@@ -1701,7 +1601,6 @@ namespace BigDecimals.Test
             result = val1 * val2;
             actual = result.ToString();
             actual.Should().Be(excepted);
-            BigDecimal.Precision = 10;
         }
 
         [TestMethod]
@@ -1741,7 +1640,6 @@ namespace BigDecimals.Test
             result = val1 / val2;
             actual = result.ToString();
             actual.Should().Be(excepted);
-            BigDecimal.Precision = 10;
         }
 
         [TestMethod]
@@ -1996,7 +1894,6 @@ namespace BigDecimals.Test
             BigDecimal bigDecimalResult = BigDecimal.Sqrt(bigDecimalValue);
             actual = bigDecimalResult.ToString();
             actual.Should().Be(excepted);
-            BigDecimal.Precision = 10;
         }
 
         [TestMethod]
